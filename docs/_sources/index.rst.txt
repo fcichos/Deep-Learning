@@ -21,7 +21,7 @@ Welcome to the BuildMoNa Deep Learning Module!
    :caption: Lecture 1:
 
    lectures/L1/overview_1.rst
-   notebooks/L1/2_reinforcement_learning.ipynb   
+   notebooks/L1/1_reinforcement_learning.ipynb   
    
 .. toctree::
    :maxdepth: 2
