@@ -1,16 +1,8 @@
 Lecture Contents
 ================
 
-In this second lecture we will have a look at some
+Lecture 13 is all about Neural Networks. We will create a neural network in Python from the scratch to classify handwritten numbers. This is one of the standard problems you find. In the second part of the lecture we will do the same with the keras and tensorflow modules in Python. You will recognize, by how much these networks simplify the construction of machine learning applications. This lecture has been largely created by Martin Fränzl.
 
-1. NumPy module
-2. 2D plotting
-3. 3D plotting
-4. Random number generation
+1. Neural Networks (MNIST)
+2. Neural Networks with Keras (MNIST)
 
-
-.. raw:: html
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/iHB8gIvayG0" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-    </div>

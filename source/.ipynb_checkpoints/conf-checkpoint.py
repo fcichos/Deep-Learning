@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Introduction to Computer-based Physical Modeling 21'
+project = 'Deep Learning BuildMoNa Hands-On'
 copyright = '2021, Frank Cichos'
 author = 'Frank Cichos'
 master_doc = 'index'
@@ -96,7 +96,7 @@ html_context = {
     # Set the following variables to generate the resulting github URL for each page.
     # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'fcichos',
-    'github_repo': 'CompSoft21',
+    'github_repo': 'Deep-Learning',
     'github_version': 'main/',
     'conf_py_path': '/source/'
 }

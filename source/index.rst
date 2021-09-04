@@ -20,14 +20,14 @@ Welcome to the BuildMoNa Deep Learning Module!
    :maxdepth: 2
    :caption: Lecture 1:
 
-   lectures/L1/overview_12.rst
+   lectures/L1/overview_1.rst
    notebooks/L1/2_reinforcement_learning.ipynb   
    
 .. toctree::
    :maxdepth: 2
    :caption: Lecture 2:
 
-   lectures/L2/overview_13.rst
+   lectures/L2/overview_2.rst
    notebooks/L2/1_deep_learning.ipynb
    notebooks/L2/2_deep_learning_keras.ipynb
 
@@ -36,7 +36,7 @@ Welcome to the BuildMoNa Deep Learning Module!
    :maxdepth: 2
    :caption: Lecture 3:
 
-   lectures/L3/overview_14.rst
+   lectures/L3/overview_3.rst
    notebooks/L3/1_CNN.ipynb
    notebooks/L3/2_AutoEncoder.ipynb
 
