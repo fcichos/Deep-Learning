@@ -2,11 +2,16 @@
    sphinx-quickstart on Tue Mar 31 12:45:28 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
+.. figure:: img/CompSoft_banner.png
+
+
 
 Welcome to the BuildMoNa Deep Learning Module!
 ========================================================================
 
 
+This is the main website for the hands-on parts of the BuildMoNa teaching module T7
+"Methods of Scientific Computing: Deep Learning/Machine Learning".
 
 
 .. toctree::
