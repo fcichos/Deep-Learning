@@ -12,16 +12,15 @@
 This Website
 ============
 
-This website will contain all the information that are required for our **Deep Learning Module** Course course. It is not yet complete, but it will be updated each week and you will find a new lecture and a new assignment every week. The lecture notebooks will be accompanied with videos explaining the lecture contents but you may get along with just reading as well.  And just to give you the chance of interacting and discussing we have also created a discussion `forum at the MONA website <https://home.uni-leipzig.de/~physik/sites/mona/teaching/periodic-lectures/einfuhrung-in-computer-basiertes-physikalisches-modellieren-ss-2020/internal-einfuhrung-in-computer-basiertes-physikalisches-modellieren-ss-2020/community/>`_ , which you can reach with your login and password for that course. The forum has different categories. We hope that you will use the forum intensively to ask questions.
+This website will contain all the information that are required for our **Deep Learning Module** Course hands-on. The hands-on is using Jupyter Notebooks to provide you some examples of Python code for specific applications i.e. 
 
-    .. image:: img/forum.png
-       :width: 600px
-       :alt: forum screen
-       :align: center
+- reinforcement learning for navigation in the grid world
+- single perceptron
+- multilayer perceptron for character recognition
+- convolutional neural network for character recognition
+- convolutional auto-encoder for noise removal in time series
 
-
-You will be guided from here to several resources that you can use to learn programming in Python. Thereby we will make use of some great tools in the web, like
-
+You do not need to install any software. The notebooks are executed with the help of the myBinder service. 
 
 1. **myBinder** service to host Jupyter Notebooks (https://mybinder.org). The Binder project offers an easy place to share computing environments to everyone
 
