@@ -20,7 +20,7 @@ This website will contain all the information that are required for our **Deep L
 - convolutional neural network for character recognition
 - convolutional auto-encoder for noise removal in time series
 
-You do not need to install any software. The notebooks are executed with the help of the myBinder service. 
+You do not need to install any software. The notebooks are executed with the help of the myBinder service. Please be a bit patient with this free service. It takes a while to start up. So you may want to press the button and get some coffee ☕️!
 
 1. **myBinder** service to host Jupyter Notebooks (https://mybinder.org). The Binder project offers an easy place to share computing environments to everyone
 
