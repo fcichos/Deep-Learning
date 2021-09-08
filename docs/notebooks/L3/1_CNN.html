@@ -1,270 +1,199 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Autoencoder CNN for Time Series Denoising" href="2_AutoEncoder.html" /><link rel="prev" title="Neural Network with Keras" href="../L2/2_deep_learning_keras.html" />
 
-
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Convolutional Neural Networks &mdash; Deep Learning BuildMoNa Hands-On 1 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
+    <meta name="generator" content="sphinx-4.1.2, furo 2021.08.31"/>
+        <title>Convolutional Neural Networks - Deep Learning BuildMoNa Hands-On 1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=c7c65a82b42f6b978e58466c1e9ef2509836d916" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
     
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Autoencoder CNN for Time Series Denoising" href="2_AutoEncoder.html" />
-    <link rel="prev" title="Neural Network with Keras" href="../L2/2_deep_learning_keras.html" /> 
-</head>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
 
-<body class="wy-body-for-nav">
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
 
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
 
-          
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> Deep Learning BuildMoNa Hands-On
-          
 
-          
-            
-            <img src="../../_static/mona_logo.png" class="logo" alt="Logo"/>
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Deep Learning BuildMoNa Hands-On 1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/mona_logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Deep Learning BuildMoNa Hands-On 1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Introduction:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../course-info/website.html">This Website</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Machine Learning:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../L1/1_reinforcement_learning.html">Machine Learning and Neural Networks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Reinforcement-Learning">Reinforcement Learning</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Markov-Decision-Process">Markov Decision Process</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Methods-or-RL">Methods or RL</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Navigating-a-Grid-World">Navigating a Grid World</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Initialize-Reinforcement-Learning">Initialize Reinforcement Learning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L1/1_reinforcement_learning.html#List-of-actions">List of actions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Initial-state">Initial state</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Reinforcement-Learning-Loop">Reinforcement Learning Loop</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Convergence-of-the-Q-learning">Convergence of the Q-learning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Policy">Policy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Plot-the-policy">Plot the policy</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../L1/1_reinforcement_learning.html#Where-to-go-from-here">Where to go from here</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../L2/1_deep_learning.html">Neural Networks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../L2/1_deep_learning.html#The-MNIST-Data-Set">The MNIST Data Set</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Load-the-data">Load the data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Normalize-the-data">Normalize the data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Preparing-training-and-testing-data">Preparing training and testing data</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/1_deep_learning.html#A-Single-Neuron">A Single Neuron</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Forward-Propogation">Forward Propogation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Loss-Function">Loss Function</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/1_deep_learning.html#Trainging-the-Network">Trainging the Network</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Backward-Propagation">Backward Propagation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Stochastic-Gradient-Descent">Stochastic Gradient Descent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Build-an-Train">Build an Train</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Testing-our-model">Testing our model</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/1_deep_learning.html#Network-with-Hidden-Layers">Network with Hidden Layers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/1_deep_learning.html#Multiclass-Network">Multiclass Network</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Changes-to-the-model">Changes to the model</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../L2/1_deep_learning.html#Forward-Pass">Forward Pass</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../L2/1_deep_learning.html#id1">Loss Function</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../L2/1_deep_learning.html#Back-Propagation">Back Propagation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../L2/1_deep_learning.html#Build-and-Train">Build and Train</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../L2/1_deep_learning.html#Model-performance">Model performance</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/1_deep_learning.html#Test-the-model">Test the model</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../L2/2_deep_learning_keras.html">Neural Network with Keras</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../L2/2_deep_learning_keras.html#MNIST-Data-Set-(Keras)">MNIST Data Set (Keras)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/2_deep_learning_keras.html#Build-the-model">Build the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/2_deep_learning_keras.html#Compile-the-model">Compile the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/2_deep_learning_keras.html#Train-the-model">Train the model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../L2/2_deep_learning_keras.html#Testing-the-model">Testing the model</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Convolutional Neural Networks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Layout-of-a-CNN">Layout of a CNN</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Convolutional-Layer">Convolutional Layer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Padding">Padding</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Striding">Striding</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#RELU-Activation">RELU Activation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Pooling-Layer">Pooling Layer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Output-Size">Output Size</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Flattening">Flattening</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Dropout">Dropout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Fully-Connected-Layer">Fully Connected Layer</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#Example-CNN-with-Keras">Example CNN with Keras</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Prepare-the-data">Prepare the data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Build-the-network">Build the network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Train-the-network">Train the network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Evaluate-the-trained-network">Evaluate the trained network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Evaluate-the-accuracy-of-your-visual-neural-network-;-)">Evaluate the accuracy of your visual neural network ;-)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Where-to-go-from-here?">Where to go from here?</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="2_AutoEncoder.html">Autoencoder CNN for Time Series Denoising</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="2_AutoEncoder.html#Autoencoder-Structure-and-Purpose">Autoencoder Structure and Purpose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2_AutoEncoder.html#Data-Generation">Data Generation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2_AutoEncoder.html#Create-the-Autoencoder-network">Create the Autoencoder network</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="2_AutoEncoder.html#Define-model-data">Define model data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="2_AutoEncoder.html#Encoder/Decoder-Setup">Encoder/Decoder Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="2_AutoEncoder.html#Training-the-encoder">Training the encoder</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="2_AutoEncoder.html#Reconstruction-of-the-Data">Reconstruction of the Data</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../L1/1_reinforcement_learning.html">Machine Learning and Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L2/1_deep_learning.html">Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L2/2_deep_learning_keras.html">Neural Network with Keras</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Example-CNN-with-Keras">Example CNN with Keras</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_AutoEncoder.html">Autoencoder CNN for Time Series Denoising</a></li>
 </ul>
 
-            
-          
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <article role="main">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
         </div>
         
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Deep Learning BuildMoNa Hands-On</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Convolutional Neural Networks</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-            
-              <a href="https://github.com/fcichos/Deep-Learning/blob/main//source/notebooks/L3/1_CNN.ipynb" class="fa fa-github"> Edit on GitHub</a>
-            
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  
 <style>
 /* CSS for nbsphinx extension */
 
@@ -496,32 +425,10 @@ div.rendered_html tbody tr:nth-child(odd) {
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
-
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
 </style>
 <div class="admonition note">
-<p>This page was generated from <cite>source/notebooks/L3/1_CNN.ipynb</cite>.
-<span class="raw-html"><br/><a href="https://mybinder.org/v2/gh/fcichos/Deep-Learning/main?urlpath=tree/source/notebooks/L3/1_CNN.ipynb"><img alt="Binder badge" src="https://img.shields.io/badge/launch-full%20binder-red.svg" style="vertical-align:text-bottom"></a></span></p>
+<p>This page was generated from <cite>/Users/fci/Documents/GitHub/Deep Learning/source/notebooks/L3/1_CNN.ipynb</cite>.
+<span class="raw-html"><br/><a href="https://mybinder.org/v2/gh/fcichos/Deep-Learning/main?urlpath=tree//Users/fci/Documents/GitHub/Deep Learning/source/notebooks/L3/1_CNN.ipynb"><img alt="Binder badge" src="https://img.shields.io/badge/launch-full%20binder-red.svg" style="vertical-align:text-bottom"/></a></span></p>
 </div>
 <div class="section" id="Convolutional-Neural-Networks">
 <h1>Convolutional Neural Networks<a class="headerlink" href="#Convolutional-Neural-Networks" title="Permalink to this headline">¶</a></h1>
@@ -536,23 +443,23 @@ particles.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = 'retina'
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
 <span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">convolve</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                     <span class="s1">&#39;lines.linewidth&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="s1">&#39;xtick.top&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                     <span class="s1">&#39;xtick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.right&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'font.size'</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+                     <span class="s1">'axes.titlesize'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                     <span class="s1">'axes.labelsize'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+                     <span class="s1">'axes.labelpad'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                     <span class="s1">'lines.linewidth'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+                     <span class="s1">'lines.markersize'</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">'xtick.labelsize'</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+                     <span class="s1">'ytick.labelsize'</span> <span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
+                     <span class="s1">'xtick.top'</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                     <span class="s1">'xtick.direction'</span> <span class="p">:</span> <span class="s1">'in'</span><span class="p">,</span>
+                     <span class="s1">'ytick.right'</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                     <span class="s1">'ytick.direction'</span> <span class="p">:</span> <span class="s1">'in'</span>
                     <span class="p">})</span>
 </pre></div>
 </div>
@@ -561,7 +468,7 @@ particles.</p>
 visual cortex, complex functional responses generated by “complex cells” are constructed from more simplistic responses from “simple cells’. For instances, simple cells would respond to oriented edges etc, while complex cells will also respond to oriented edges but with a degree of spatial invariances. You may find the following <a class="reference external" href="https://www.youtube.com/watch?v=Cw5PKV9Rj3o">youtube video</a> interesting with that respect.</p>
 <div class="section" id="Layout-of-a-CNN">
 <h2>Layout of a CNN<a class="headerlink" href="#Layout-of-a-CNN" title="Permalink to this headline">¶</a></h2>
-<p><img alt="CNN" src="../../_images/CNN_layout.png" /></p>
+<p><img alt="CNN" src="../../_images/CNN_layout.png"/></p>
 <p>“A simple CNN is a sequence of layers, and every layer of a CNN transforms one volume of activations to another through a differentiable function.” What it actually means is that, each layer is associated with converting the information from the values, available in the previous layers, into some more complex information and pass on to the next layers for further generalization.</p>
 <ol class="arabic simple">
 <li><p><strong>Convolution Block:</strong> Consists of the Convolution Layer and the Pooling Layer. This layer forms the essential component of Feature-Extraction</p></li>
@@ -572,9 +479,9 @@ visual cortex, complex functional responses generated by “complex cells” are
 <h2>Convolutional Layer<a class="headerlink" href="#Convolutional-Layer" title="Permalink to this headline">¶</a></h2>
 <p>The convolutional layer is related to the extraction of specific features from an image for example. For this pupose it applies a filter with a specific mathematical procedure to the image. This filter is known from image processing to have a filter kernel.</p>
 <p>The image can be represented as a simple matrix with data entries. In general there might be three layers for the colors red green and blue but we will assume just a single layer here. In the same way, the kernel for the convolution is a simple image, just smaller. Often kernel sizes of 3x3 matrix entries are used. The image below shows two examples.</p>
-<p><img alt="image_kernel" src="../../_images/image_kernel.png" /></p>
+<p><img alt="image_kernel" src="../../_images/image_kernel.png"/></p>
 <p>If the image is now convoluted with the kernel, a subimage of the same size as the kernel is selected from the image and multiplied elementwise with the kernel. The resulting matrix entries are then summed up to yield a single number, which corresponds to a single pixel in the corresponding convoluted image. The example above results in a 4x4 matrix, as there are just 4 different possible positions of the kernel along the 6x6 image.</p>
-<p><img alt="convolution" src="../../_images/convolution.png" /></p>
+<p><img alt="convolution" src="../../_images/convolution.png"/></p>
 <p>The above example shows, that the maximum value for the convolution result would be given if the original pixel numbers would be in a diagonal. The specific kernel, we have chosen is enhancing diagonal features in the image. Correspondingly other features would be enhanced by other kernels. Many CNNs apply in one step multiple kernels to the image. The results of these operation are called feature maps. The code below demonstrates the convolution with the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> module.</p>
 <p><strong>Image array</strong></p>
 <div class="nbinput nblast docutils container">
@@ -607,7 +514,7 @@ visual cortex, complex functional responses generated by “complex cells” are
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">r</span><span class="o">=</span><span class="n">convolve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">)</span>
+<span></span><span class="n">r</span><span class="o">=</span><span class="n">convolve</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'valid'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -619,25 +526,25 @@ visual cortex, complex functional responses generated by “complex cells” are
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'image'</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;kernel&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'kernel'</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;convoluted image&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'y'</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'convoluted image'</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -648,7 +555,7 @@ visual cortex, complex functional responses generated by “complex cells” are
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L3_1_CNN_19_0.png" class="no-scaled-link" src="../../_images/notebooks_L3_1_CNN_19_0.png" style="width: 1046px; height: 360px;" />
+<img alt="../../_images/notebooks_L3_1_CNN_19_0.png" class="no-scaled-link" src="../../_images/notebooks_L3_1_CNN_19_0.png" style="width: 1046px; height: 360px;"/>
 </div>
 </div>
 <div class="section" id="Padding">
@@ -664,13 +571,13 @@ all the sides of the image matrix. This idea is known as padding. In actual sens
 <div class="section" id="RELU-Activation">
 <h2>RELU Activation<a class="headerlink" href="#RELU-Activation" title="Permalink to this headline">¶</a></h2>
 <p>The resulting feature maps are finally passed through and activation function as we identified before. ReLU or Rectified Linear Unit is applied on all the cells of all the output-matrix. The function is defined as:</p>
-<div class="math notranslate nohighlight">
+<div class="math-wrapper"><div class="math notranslate nohighlight">
 \[\begin{split}f(x)=\left\{
 \begin{matrix}
 0\,\, {\rm for\, x&lt;0}\\
 x\,\, {\rm for\, x\ge0}
 \end{matrix}
-\right .\end{split}\]</div>
+\right .\end{split}\]</div></div>
 <p>The shape of the ReLU function is shown below. It supresses essentially all output values which are negative.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[134]:
@@ -679,8 +586,8 @@ x\,\, {\rm for\, x\ge0}
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ReLU(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'ReLU(x)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -690,7 +597,7 @@ x\,\, {\rm for\, x\ge0}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L3_1_CNN_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L3_1_CNN_27_0.png" style="width: 396px; height: 273px;" />
+<img alt="../../_images/notebooks_L3_1_CNN_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L3_1_CNN_27_0.png" style="width: 396px; height: 273px;"/>
 </div>
 </div>
 <p>The basic intuition to derive from here is that, after convolution, if a particular convolution function results in ‘0’ or a negative value, it implies that the feature is not present there and we denote it by ‘0’, and for all the other cases we keep the value. Together with all the operations and the functions applied on the input image, we form the first part of the Convolutional Block.</p>
@@ -699,13 +606,13 @@ x\,\, {\rm for\, x\ge0}
 <h2>Pooling Layer<a class="headerlink" href="#Pooling-Layer" title="Permalink to this headline">¶</a></h2>
 <p>The Pooling layer consist of performing the process of extracting a particular value from a set of values, usually the max value or the average value of all the values. This reduces the size of the output matrix. For example, for MAX-POOLING, we take in the max value among all the values of say a 2 X 2 part of the matrix. Thus, we are actually taking in the values denoting the presence of a feature in that section of the image. In this way we are getting rid of unwanted information regarding the
 presence of a feature in a particular portion of the image and considering only what is required to know. It is common to periodically insert a Pooling layer in-between successive convolutional blocks in a CNN architecture. Its function is to progressively reduce the spatial size of the representation to reduce the number of parameters and computation in the network.</p>
-<p><img alt="pooling" src="../../_images/pooling.png" /></p>
+<p><img alt="pooling" src="../../_images/pooling.png"/></p>
 </div>
 <div class="section" id="Output-Size">
 <h2>Output Size<a class="headerlink" href="#Output-Size" title="Permalink to this headline">¶</a></h2>
 <p>All of the given operations are tentatively changing the input matrix size into an output matrix size.</p>
-<div class="math notranslate nohighlight">
-\[n_{\rm out}=\left [ \frac{n_{\rm in}+2p-k}{s}\right ]+1\]</div>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[n_{\rm out}=\left [ \frac{n_{\rm in}+2p-k}{s}\right ]+1\]</div></div>
 <p>where</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(n_{\rm in}\)</span>: number of input features</p></li>
@@ -719,7 +626,7 @@ presence of a feature in a particular portion of the image and considering only 
 <div class="section" id="Flattening">
 <h2>Flattening<a class="headerlink" href="#Flattening" title="Permalink to this headline">¶</a></h2>
 <p>After multiple convolution layers and downsampling operations, the 3D representation of the image is converted into a feature vector that is passed into a multi-layer perceptron to output probabilities. The following image describes the flattening operation</p>
-<p><img alt="flattening" src="../../_images/flattening.png" /></p>
+<p><img alt="flattening" src="../../_images/flattening.png"/></p>
 </div>
 <div class="section" id="Dropout">
 <h2>Dropout<a class="headerlink" href="#Dropout" title="Permalink to this headline">¶</a></h2>
@@ -760,15 +667,15 @@ presence of a feature in a particular portion of the image and considering only 
 <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
 
 <span class="c1"># Scale images to the [0, 1] range</span>
-<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
-<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"float32"</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">x_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"float32"</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
 <span class="c1"># Make sure images have shape (28, 28, 1)</span>
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x_train shape:&quot;</span><span class="p">,</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;train samples&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;test samples&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x_train shape:"</span><span class="p">,</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"train samples"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"test samples"</span><span class="p">)</span>
 
 
 <span class="c1"># convert class vectors to binary class matrices</span>
@@ -810,13 +717,13 @@ x_train shape: (60000, 28, 28, 1)
 <span></span><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">),</span>
-        <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">),</span>
         <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
-        <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"relu"</span><span class="p">),</span>
         <span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span>
         <span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
         <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
-        <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">),</span>
+        <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"softmax"</span><span class="p">),</span>
     <span class="p">]</span>
 <span class="p">)</span>
 
@@ -829,7 +736,7 @@ x_train shape: (60000, 28, 28, 1)
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Model: &#34;sequential_2&#34;
+Model: "sequential_2"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #
 =================================================================
@@ -866,7 +773,7 @@ training data. What could happen during training is now that the training loss d
 <span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">15</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">&quot;categorical_crossentropy&quot;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s2">&quot;adam&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s2">"categorical_crossentropy"</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s2">"adam"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">"accuracy"</span><span class="p">])</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
@@ -928,8 +835,8 @@ Epoch 15/15
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test loss:&quot;</span><span class="p">,</span> <span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test accuracy:&quot;</span><span class="p">,</span> <span class="n">score</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Test loss:"</span><span class="p">,</span> <span class="n">score</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Test accuracy:"</span><span class="p">,</span> <span class="n">score</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -952,7 +859,7 @@ Test accuracy: 0.9918000102043152
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">n</span><span class="o">=</span><span class="n">x_test</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">)]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My prediction is: &#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'My prediction is: '</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -970,7 +877,7 @@ My prediction is:  3
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L3_1_CNN_56_1.png" class="no-scaled-link" src="../../_images/notebooks_L3_1_CNN_56_1.png" style="width: 258px; height: 255px;" />
+<img alt="../../_images/notebooks_L3_1_CNN_56_1.png" class="no-scaled-link" src="../../_images/notebooks_L3_1_CNN_56_1.png" style="width: 258px; height: 255px;"/>
 </div>
 </div>
 </div>
@@ -982,63 +889,103 @@ My prediction is:  3
 </script></div>
 </div>
 
-
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="2_AutoEncoder.html" class="btn btn-neutral float-right" title="Autoencoder CNN for Time Series Denoising" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../L2/2_deep_learning_keras.html" class="btn btn-neutral float-left" title="Neural Network with Keras" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
+      </article>
+      <footer>
         
-        &copy; Copyright 2021, Frank Cichos
-      <span class="lastupdated">
-        Last updated on Sep 07, 2021.
-      </span>
+        <div class="related-pages">
+          <a class="next-page" href="2_AutoEncoder.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Autoencoder CNN for Time Series Denoising</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../L2/2_deep_learning_keras.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Neural Network with Keras</div>
+                
+              </div>
+            </a>
+        </div>
 
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+        <div class="related-information">
+              Copyright &#169; 2021, Frank Cichos
+            |
+            Last updated on Sep 08, 2021.
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../../_sources/notebooks/L3/1_CNN.ipynb.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Convolutional Neural Networks</a><ul>
+<li><a class="reference internal" href="#Layout-of-a-CNN">Layout of a CNN</a></li>
+<li><a class="reference internal" href="#Convolutional-Layer">Convolutional Layer</a><ul>
+<li><a class="reference internal" href="#Padding">Padding</a></li>
+<li><a class="reference internal" href="#Striding">Striding</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#RELU-Activation">RELU Activation</a></li>
+<li><a class="reference internal" href="#Pooling-Layer">Pooling Layer</a></li>
+<li><a class="reference internal" href="#Output-Size">Output Size</a></li>
+<li><a class="reference internal" href="#Flattening">Flattening</a></li>
+<li><a class="reference internal" href="#Dropout">Dropout</a></li>
+<li><a class="reference internal" href="#Fully-Connected-Layer">Fully Connected Layer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Example-CNN-with-Keras">Example CNN with Keras</a><ul>
+<li><a class="reference internal" href="#Prepare-the-data">Prepare the data</a></li>
+<li><a class="reference internal" href="#Build-the-network">Build the network</a></li>
+<li><a class="reference internal" href="#Train-the-network">Train the network</a></li>
+<li><a class="reference internal" href="#Evaluate-the-trained-network">Evaluate the trained network</a></li>
+<li><a class="reference internal" href="#Evaluate-the-accuracy-of-your-visual-neural-network-;-)">Evaluate the accuracy of your visual neural network ;-)</a></li>
+<li><a class="reference internal" href="#Where-to-go-from-here?">Where to go from here?</a></li>
+</ul>
+</li>
+</ul>
 
-</footer>
-
+          </div>
         </div>
       </div>
-
-    </section>
-
+      
+      
+    </aside>
   </div>
-  
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script>
-
-  
-  
-    
-   
-
-</body>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/main.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    </body>
 </html>
