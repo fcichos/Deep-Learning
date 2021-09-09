@@ -16,17 +16,34 @@ This is the main website for the hands-on parts of the BuildMoNa teaching module
 
 .. toctree::
    :maxdepth: 2
-   :caption: Introduction:
+   :caption: Website:
 
    course-info/website.rst
 
 .. toctree::
    :maxdepth: 2
-   :caption: Machine Learning:
+   :caption: Introduction:
+
+    notebooks/L1/0_introduction.ipynb   
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Reinforcement Learning:
 
    notebooks/L1/1_reinforcement_learning.ipynb   
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Neural Networks:
+
    notebooks/L2/1_deep_learning.ipynb
    notebooks/L2/2_deep_learning_keras.ipynb
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Convolutional Neural Networks:
+
    notebooks/L3/1_CNN.ipynb
    notebooks/L3/2_AutoEncoder.ipynb
 
