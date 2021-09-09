@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Deep Learning BuildMoNa Hands-On'
+project = 'Deep Learning Hands-On'
 copyright = '2021, Frank Cichos'
 author = 'Frank Cichos'
 master_doc = 'index'
