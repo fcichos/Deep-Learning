@@ -4,11 +4,11 @@
    "cell_type": "markdown",
    "metadata": {
     "slideshow": {
-     "slide_type": "slide"
+     "slide_type": "subslide"
     }
    },
    "source": [
-    "# Machine Learning and Neural Networks"
+    "# Reinforcement Learning"
    ]
   },
   {
@@ -49,17 +49,6 @@
     "                     'xtick.direction' : 'in',\n",
     "                     'ytick.right' : True,\n",
     "                     'ytick.direction' : 'in',}) "
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "subslide"
-    }
-   },
-   "source": [
-    "## Reinforcement Learning"
    ]
   },
   {
