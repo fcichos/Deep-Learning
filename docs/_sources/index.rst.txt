@@ -24,7 +24,7 @@ This is the main website for the hands-on parts of the BuildMoNa teaching module
    :maxdepth: 2
    :caption: Introduction:
 
-    notebooks/L1/0_introduction.ipynb   
+   notebooks/L1/0_introduction.ipynb
 
 
 .. toctree::
