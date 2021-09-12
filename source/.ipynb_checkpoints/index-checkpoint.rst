@@ -47,6 +47,11 @@ This is the main website for the hands-on parts of the BuildMoNa teaching module
    notebooks/L3/1_CNN.ipynb
    notebooks/L3/2_AutoEncoder.ipynb
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Recurrent Neural Networks:
+
+
 
 Indices and tables
 ==================
